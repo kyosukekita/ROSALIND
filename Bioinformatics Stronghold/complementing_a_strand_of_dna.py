@@ -4,6 +4,6 @@ for line in file:
 
 def reverse_complement(sequence):
     temp=sequence.replace("A","x").replace("T","A").replace("x","T")
-    return (temp.replace("G","x").replace("C","x").replace("x","C")[::-1])
+    return (temp.replace("G","x").replace("C","G").replace("x","C")[::-1])
 
 reverse_complement(str_line)

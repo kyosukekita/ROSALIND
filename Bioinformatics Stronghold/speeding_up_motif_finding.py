@@ -5,7 +5,7 @@ def kmp(string):
     failure_array=[0]*len(string)
     j=failure_array[0]
     for i in range(1,len(string)):
-        while string[i] !=string[j]:
+        if string[i] !=string[j]:
             j =failure_array[j-1]
         if string[i]==string[j]:
             j+=1

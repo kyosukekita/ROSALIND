@@ -17,13 +17,12 @@ for i in range(len(ID)):
                                                               
 handle = open('seq_file.fasta', 'r')                          
 motifs = re.compile(r'(?=(N[^P][ST][^P]))')  #事前に検索するパターンをコンパイルしておくと、同じパターンを何度も検索する場合高速に探索できる                 
-count = 0                                                     
+                                                     
 for record in SeqIO.parse(handle, 'fasta'):                   
     sequence = record.seq                                     
     positions = []                                            
     for m in re.finditer(motifs, str(sequence)):              
-                positions.append(m.start() + 1)                               
+        positions.append(m.start() + 1)                               
     if len(positions) > 0:                                    
         print(ID[count])                                      
-        print(' '.join(map(str, positions)))                  
-    count += 1   
+        print(' '.join(map(str, positions))) 

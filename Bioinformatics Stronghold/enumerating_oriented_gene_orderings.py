@@ -2,7 +2,7 @@ import itertools
 
 n=6
 a = itertools.permutations(range(1,n+1))
-print(len(list(a)*2**n))
+print(len(list(a))*2**n)
 
 
 def signedPermutations(n):

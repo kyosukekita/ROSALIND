@@ -51,6 +51,12 @@ t_prim = ''
 i = len(s)
 j = len(t)
 
+#https://github.com/ssjunnebo/Rosalind/blob/master/edta/edta.py
+def match(a,b):
+    if a == b:
+        return(0)
+    return(1)
+
 while i>0 and j> 0:
     if M[i][j] == M[i-1][j-1] + match(s[i-1], t[j-1]):
         s_prim += s[i-1]

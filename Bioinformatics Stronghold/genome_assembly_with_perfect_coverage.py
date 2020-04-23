@@ -23,3 +23,8 @@ genome=""
 for r in R:
     genome +=r[0]
 print(genome)
+
+"""
+genome assembly as shortest superstringで用いた方法は使えない。この問題は
+環状のperfect coverageを求めているので、片方向からしか配列を足せない。
+"""

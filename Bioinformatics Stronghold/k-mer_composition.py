@@ -17,4 +17,4 @@ for i in range(len(dna)-4+1):
     table[kmer] +=1
     
 for i in table.values():
-    print(i, end= ' ')
+    print(i, end= ' ') #end=' 'で改行無し

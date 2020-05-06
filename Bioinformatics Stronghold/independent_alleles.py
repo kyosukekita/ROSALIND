@@ -2,6 +2,7 @@ k=5
 N=8
 P=2**k
 
+import math
 def combination(n,k):
     return math.factorial(n)/ (math.factorial(k)*math.factorial(n-k))
 

@@ -7,10 +7,10 @@ GUUACGUACGAAGCUUUUAACG
 """
 s=s.replace("\n","")
 
-dp={}
+cache={}
 def noncrossingPerfectMatching(rna):
-    if rna in dp:
-        return dp[rna]
+    if rna in cache:
+        return cache[rna]
     
     if len(rna)==0 or len(rna)==1:
         return 1 
@@ -19,8 +19,8 @@ def noncrossingPerfectMatching(rna):
     for i in range(1,len(rna),2):
         if(rna[0]=="A" and rna[i]=="U") or(rna[0]=="G" and rna[i]=="C") or (rna[0]=="C" and rna[i]=="G") or (rna[0]=="U" and rna[i]=="A"):
             temp +=(noncrossingPerfectMatching(rna[1:i])*noncrossingPerfectMatching(rna[i+1:]))
-    dp[rna]=temp%(10**6)
+    cache[rna]=temp%(10**6)
     
-    return dp[rna]
+    return cache[rna]
 
 noncrossingPerfectMatching(s)

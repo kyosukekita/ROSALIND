@@ -36,8 +36,8 @@ def global_align_with_const(s,t):
     columns=['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'])
  
     dp=[[0 for j in range(len(t) + 1)] for i in range(len(s) + 1)]
-    x=[[-100 for j in range(len(t)+1)] for i in range(len(s)+1)]
-    y=[[-100 for j in range(len(t)+1)] for i in range(len(s)+1)]
+    x=[[-100 for j in range(len(t)+1)] for i in range(len(s)+1)] #string s  after a gap
+    y=[[-100 for j in range(len(t)+1)] for i in range(len(s)+1)] #string t  after a gap
     
 
     for i in range(1,len(s) + 1):

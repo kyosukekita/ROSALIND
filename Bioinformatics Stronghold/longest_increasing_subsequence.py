@@ -15,3 +15,14 @@ def longest_increasing_subsequence(seq):
     return len(LIS)
 
 #LISそのものは最長増加部分列になっているわけではないので注意。
+
+
+#正解
+def lgis(n, π):
+    S = [[]]*(n+1)
+    for i in π:
+        S[i] = max(S[:i], key=len)+[i]
+    print(S)
+    return ' '.join(map(str, max(S, key=len)))
+
+print(lgis(5, permutation_list)) 

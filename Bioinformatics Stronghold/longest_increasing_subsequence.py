@@ -15,3 +15,4 @@ def longest_increasing_subsequence(seq):
     return LIS
     
 print(*longest_increasing_subsequence(permutation_list))
+print(*longest_increasing_subsequence(permutation_list[::-1)) #Longest decreasing subsequence

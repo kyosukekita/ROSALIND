@@ -80,28 +80,28 @@ def local_alignment(s,t):
                 s_start=i
                 t_start=j
 
-    s_prim=''
-    t_prim=''
+    s_align=''
+    t_align=''
     i=s_start
     j=t_start
     #Begin with the highest score, end when 0 is encountered
     while (i>0 and j>0):
         if dp[i][j] ==dp[i-1][j-1]+PAM250[s[i-1]][t[j-1]]:
-            s_prim += s[i-1]
-            t_prim += t[j-1]
+            s_align += s[i-1]
+            t_align += t[j-1]
             i -= 1
             j -= 1
         elif i>0 and dp[i][j]==dp[i-1][j]-5:
-            s_prim += s[i-1]
+            s_align += s[i-1]
             i -=1
         elif j>0 and dp[i][j]==dp[i][j-1]-5:
-            t_prim += t[j-1]
+            t_align += t[j-1]
             j -= 1
         elif dp[i][j]==0:
             break
 
     print(maximum)
-    print(s_prim[::-1])
-    print(t_prim[::-1])
+    print(s_align[::-1])
+    print(t_align[::-1])
 
 local_alignment(s,t)

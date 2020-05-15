@@ -42,7 +42,7 @@ Y 163.0633
         nearest_candidate = None
         
         for i in mass.keys():
-            if abs(pairs[index+1][0]-pairs[index][0]-i)< 0.0001:
+            if abs(pairs[index+1][0]-pairs[index][0]-i)< 0.001:
                 nearest_candidate=i
 
         if nearest_candidate is None:  #(if not nearest_candidate)

@@ -45,7 +45,7 @@ Y 163.0633
             if abs(pairs[index+1][0]-pairs[index][0]-i)< 0.0001:
                 nearest_candidate=i
 
-        if not nearest_candidate:
+        if nearest_candidate is None:  #(if not nearest_candidate)
             pairs[index+1]=(pairs[index+1][1], pairs[index+1][0])
             pairs.sort()
         else:

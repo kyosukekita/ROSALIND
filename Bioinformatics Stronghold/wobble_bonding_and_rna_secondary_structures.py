@@ -6,7 +6,7 @@ cache={}
 def wobble(rna):
     rna=rna.replace("\n","")
     
-    if len(rna)==0 or len(rna)==1:
+    if len(rna)<=4:
         return 1
     
     if rna in cache:

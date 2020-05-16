@@ -1,0 +1,25 @@
+file= open('Desktop/Downloads/rosalind_asmq.txt').read()
+strings=[i for i in file.split()]
+strings.sort(key=len,reverse=True)
+
+N50=0
+N75=0
+
+s=[]
+string=0
+for i in range(len(strings)):
+    string+=len(strings[i])
+    s.append(string)
+
+for i in range(len(s)):
+    if (s[i])>=s[-1]*0.5:
+        N50=len(strings[i])
+        break
+
+for i in range(len(s)):
+    if (s[i])>s[-1]*0.75:
+        N75=len(strings[i])
+        break
+    
+
+print(N50,N75)

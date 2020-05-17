@@ -13,7 +13,7 @@ numbers of alleles in previous generation. Thus we have Markov chain with transi
 
 Pdom=m/(2*N)
 Prec=1-Pdom
-p=[combination(2*N,i)*(Prec**i)*(Pdom**(2*N-i)) for i in range(2*N+1)]#一番最初の
+p=[combination(2*N,i)*(Prec**i)*(Pdom**(2*N-i)) for i in range(2*N+1)]
 
 for gen in range(2,g+1):#g times
     temp_p=[]

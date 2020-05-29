@@ -1,0 +1,72 @@
+import scipy.stats as stats
+import numpy as np
+
+
+
+file = open('Desktop/Downloads/rosalind_prsm.txt').read()
+file=[a for a in file.split("\n") if a !='']
+
+n=int(file[0])
+S=[]
+for i in range(1,n+1):
+    S.append(file[i])
+R=[]
+for i in range(n+1,len(file)):
+    R.append(float(file[i]))
+
+
+def seq2mass(sequence):
+    """ペプチド配列の分子量を算出"""
+    protein_mass_table="""
+A 71.03711 C 103.00919 D 115.02694 E 129.04259
+F 147.06841 G 57.02146 H 137.05891 I 113.08406
+K 128.09496 L 113.08406 M 131.04049 N 114.04293
+P 97.05276 Q 128.05858 R 156.10111 S 87.03203
+T 101.04768 V 99.06841 W 186.07931 Y 163.06333 
+"""
+    temp = protein_mass_table.split()
+    weight_list=[float (k) for k in temp[1::2]]
+    amino_list=[str(k) for k in temp[0::2]]
+    mass_table=dict(zip(amino_list, weight_list))
+    
+    total_mass=0
+    for i in list(sequence):
+        total_mass+=mass_table[i]
+    
+    return total_mass
+
+
+subseq_masses=[]#database内ペプチドの部分配列を全て求め、さらに部分配列の質量を求める
+for i in range(n):
+    subseq=[]
+    for x in range(0,len(S[i])):
+        for y in range(x,len(S[i])):
+            if (x!=0 and y!=len(S[i])-1):
+                continue
+            else:
+                subseq.append(S[i][x:y+1])
+                
+    subseq_mass=list(map(seq2mass,(subseq)))
+    subseq_masses.append(subseq_mass)
+
+
+
+mode=0
+peptide=""
+
+#RとSのminkowski distanceを求めてリストにする.その後minkow distanceの最頻値を記録
+for i in range(n):
+    minkow_distance=[]
+    for x in range(len(subseq_masses[i])):
+        for y in range(len(R)):
+            minkow_distance.append(round(R[y]-subseq_masses[i][x],5))
+            
+    t=np.array(minkow_distance)
+    mode_multi=int(stats.mode(t)[1])
+    
+    if mode_multi>mode:
+        mode=mode_multi
+        peptide=S[i]
+
+print(mode)
+print(peptide)

@@ -73,6 +73,7 @@ def Path(graph):#引数は、1.ノード1, 2.ノード2, 3.1と2の間のエッ�
             peptide_list.append(peptide)
             tmp_pep = tmp_peps.pop()
             peptide = tmp_pep + next_edge[2]
+            #break サンプルデータセットの場合、ここにbreakをつけないとエラーが起きる
 
     return peptide_list
 

@@ -5,7 +5,7 @@ m=16
 
 
 def mortalFibonacci(n,m):
-    ages=[1]+[0]*(m-1)
+    ages=[1]+[0]*(m-1) #k歳のウサギの数を数える。ウサギの歳はm通り。
     for i in range(n-1):
         ages=[sum(ages[1:])]+ages[:-1]
     return sum(ages)

@@ -1,3 +1,5 @@
+import pandas as pd
+
 s="""
 PLEASANTLY
 """
@@ -10,7 +12,6 @@ def global_align_with_const(s,t):
     s=s.replace('\n','')
     t=t.replace('\n','')
    
-    import pandas as pd
     BLOSUM62=pd.DataFrame([
     [4, 0, -2, -1, -2, 0, -2, -1, -1, -1, -1, -2, -1, -1, -1, 1, 0, 0, -3, -2],
     [0, 9, -3, -4, -2, -3, -3, -1, -3, -1, -1, -3, -3, -3, -3, -1, -1, -1, -2, -2],
@@ -54,6 +55,6 @@ def global_align_with_const(s,t):
             
             dp[i][j] = max(dp[i-1][j-1]+cost, x[i][j],y[i][j])
                  
-    return dp
+    return dp[len(s)][len(t)]
 
-global_align_with_const(s,t)
+print(global_align_with_const(s,t))

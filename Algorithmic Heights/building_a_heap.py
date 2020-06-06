@@ -8,11 +8,11 @@ def swap(arr,i,j):
     return arr
 
 
-def upheap(arr,i):
+def maxheap(arr,i):
     for i in range(1,n):
         j=i
         while j >0:
-            if arr[j]>arr[(j-1)//2]:
+            if arr[j]>arr[(j-1)//2]:#例えば子が5,6の時、親は2
                 swap(arr,j,(j-1)//2)
                 j=(j-1)//2
             else:
@@ -20,4 +20,4 @@ def upheap(arr,i):
     
     print(' '.join(list(map(str,arr))))
 
-upheap(A,n)
+maxheap(A,n)

@@ -11,6 +11,6 @@ def patternToNumber(pattern):#前回作った関数
 def NumberToPattern(index,k):
     candidates=[''.join(v) for v in itertools.product(['A','C','G','T'], repeat=k)]#重複あり順列
         
-    for pattern in candidates:
+    for pattern in candidates:#考えられるDNA配列を全て生成し、これを全て数字に変換。答えとヒットしたDNA配列を出力
         if patternToNumber(pattern)==index:
             return(pattern)

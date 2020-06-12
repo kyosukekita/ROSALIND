@@ -33,3 +33,24 @@ while d:#dがtrueの間は処理を続ける
     
 ans=dist[1:]
 print(*ans) 
+
+
+
+
+#幅優先探索について
+
+def bfs(graph,start):
+    visited=[]
+    stack=deque()
+    stack.append(start)
+    result=[]
+    while len(stack)>0:
+        next_node=stack.pop(0)#ちなみに、ここをpop()にするだけで深さ優先探索
+        if next_node in visited:
+            continue
+        result.append(next_node)
+        visited.append(next_node)
+        for nei in graph[next_node]:
+            stack.append(nei)
+    
+    return result

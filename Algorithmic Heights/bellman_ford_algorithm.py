@@ -30,7 +30,7 @@ def dijkstra(graph,start):
             if minNode is None:
                 minNode=node
             elif shortest_distance[node]<shortest_distance[minNode]:
-                minNode=node#未探索ノードの中で、shortest_distanceが最も大きいものを選ぶ
+                minNode=node#未探索ノードの中で、shortest_distanceが最も小さいものを選ぶ
         
         for childNode, weight in graph[minNode].items():
             if weight+shortest_distance[minNode] <shortest_distance[childNode]:

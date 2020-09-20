@@ -1,4 +1,5 @@
 #binary search
+#リストaの中に、vという数字を探す
 
 int binary_search(int v){
     int left=0;

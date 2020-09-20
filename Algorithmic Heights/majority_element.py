@@ -13,7 +13,7 @@ for i in range(0,len(A),n):
 answer=[]
 for p in P:
     p.sort()
-    mode=collections.Counter(p).most_common()[0][0]
+    mode=collections.Counter(p).most_common()[0][0] #most_commonメソッドは(要素,出現回数)という形のタプルを出現回数順に並べたリストを返す
     if p.count(mode)>n//2:
         answer.append(mode)
     else:

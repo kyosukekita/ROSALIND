@@ -39,3 +39,27 @@ def cc(graph):
 
 
 print(cc(Graph(edges)))
+
+
+#別解
+def connected_components(graph):   
+    dist=[-1]*(n+1)#-1ならば未訪問
+    d=deque()
+    
+    count=0
+    for x in range(1,n+1):
+        if (dist[x]!=-1):
+            continue
+        
+        dist[x]=0
+        d.append(x)
+        
+        while(len(d)!=0):
+            v=d.popleft()
+            for i in graph[v]:
+                if dist[i]==-1:
+                    dist[i]= dist[v]+1
+                    d.append(i)   
+        count+=1
+        
+    return count

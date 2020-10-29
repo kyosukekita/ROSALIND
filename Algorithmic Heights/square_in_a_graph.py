@@ -6,7 +6,6 @@ tmp1=[block.split("\n") for block in tmp][1:]
 
 
 def SQ(adj,NodeNum):
-    flag=False
     for i in range(NodeNum):
         first=[j for j in range(NodeNum) if adj[i][j]==1]
 

@@ -14,13 +14,18 @@ class Trie( object):
             node=node[1][base] #[2、{}]
     
     def prints(self):
-        return (self.root)
+        """今回の問題には使わないけど、グラフが見たかったらこの関数を呼び出す。"""
+        print (self.root)
 
+        
+        
 def recursive_format(node):
     for base, node2 in node[1].items():
-        print(node[0], node2[0], base)
-        recursive_format(node2)
+    print(node[0], node2[0], base)
+    recursive_format(node2)
 
+    
+    
 if __name__== '__main__':
     entry=open('Desktop/Downloads/rosalind_trie.txt').readlines() 
     #readlinesはファイルの内容を全て読み出し1行ごとのリストにする。
@@ -34,6 +39,4 @@ if __name__== '__main__':
     for string in data:
         trie_sequences.insert(string)
     
-    trie_sequences.prints()
-
     recursive_format(trie_sequences.root) 

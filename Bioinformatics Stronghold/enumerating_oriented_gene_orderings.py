@@ -7,7 +7,7 @@ print(len(list(a))*2**n)
 
 def signedPermutations(n):
     for perm in itertools.permutations(range(1,n+1)):
-        for signed_perm in itertools.product(*[(-element, element) for element in perm]):
+        for signed_perm in itertools.product(*[(-element, element) for element in perm]):#https://stackoverflow.com/questions/3034014/how-to-apply-itertools-product-to-elements-of-a-list-of-lists
             yield signed_perm
 
 for i in signedPermutations(n):

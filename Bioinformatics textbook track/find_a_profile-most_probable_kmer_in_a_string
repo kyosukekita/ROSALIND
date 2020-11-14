@@ -1,0 +1,36 @@
+#http://www.hcbravo.org/cmsc423/lectures/Motif_finding.pdf
+
+file=open('Desktop/Downloads/rosalind_ba2c.txt').read()
+dna=(file.split("\n")[0])
+k=int(file.split("\n")[1])
+matrix=[[float(k) for k in i.split()]  for i in file.split("\n")[2:6]] #リスト内包表記 https://www.javadrive.jp/python/list/index17.html
+matrix=list(zip(*matrix))#https://note.nkmk.me/python-list-transpose/　zipを使って縦と横を入れ替える方法
+
+
+def probability(matrix,sequence):
+    probability=1
+    for i in range(len(sequence)):
+        if sequence[i]=="A":
+            probability*=matrix[i][0]
+        elif sequence[i]=="C":
+            probability*=matrix[i][1]
+        elif sequence[i]=="G":
+            probability*=matrix[i][2]
+        else:
+            probability*=matrix[i][3]
+    
+    return probability
+
+
+            
+probable_kmer="None"
+highest_score=0
+
+for i in range(len(dna)-k+1):
+    kmer=dna[i:i+k]
+    if highest_score < probability(matrix,kmer):
+        highest_score=probability(matrix,kmer)
+        probable_kmer=kmer
+        
+
+print(probable_kmer)

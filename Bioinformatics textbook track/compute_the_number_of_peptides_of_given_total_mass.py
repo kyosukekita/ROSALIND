@@ -27,3 +27,32 @@ def count(weight_list,total):
     return dp[total]
 
 count(weight_list,m)
+
+
+
+
+
+#下の解法、は組み合わせを求めているので使えない。例えば、AAGとAGAが区別されていない?
+#参考　https://qiita.com/ophhdn/items/8cb1fbe4393aee760967
+coin = [57, 71, 87, 97, 99, 101, 103, 113, 114, 115, 128, 128, 129, 131, 137, 147, 156, 163, 186]
+total = 1388
+def combinations(coin, total):
+    dp = [int(i % coin[0] == 0) for i in range(total + 1)]
+    for coin in coin[1:]:
+        for i in range(coin, total+1):
+            dp[i] += dp[i-coin]
+    return dp[-1]
+
+combinations(coin, total)
+
+
+
+
+
+
+
+
+
+
+
+

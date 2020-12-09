@@ -6,7 +6,7 @@ transform=(file.split("\n")[0])
 i=int(file.split("\n")[1])
 
 
-def inv_BWT(text,i):
+def last_to_first(text,i):
     first = [x for x in range(len(text))]
     first = sorted(first, key=lambda x: text[x])
     output = ""

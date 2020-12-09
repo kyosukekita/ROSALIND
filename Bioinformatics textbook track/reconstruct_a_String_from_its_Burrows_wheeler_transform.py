@@ -30,3 +30,27 @@ def inv_BWT(text):
     return ret+"$"
     
 print(inv_BWT(transform))
+
+
+
+
+
+file = open('Desktop/Downloads/rosalind_ba9j.txt').read()
+transform=(file.split("\n")[0])
+i=int(file.split("\n")[1])
+
+
+def inv_BWT(text):
+    array = [x for x in range(len(text))]
+    array = sorted(array, key=lambda x: text[x])
+    output = ""
+    
+    idx = text.index('$')
+    for _ in range(len(text)):
+        idx=array[idx]
+        output+=text[idx]
+    
+    return output
+    
+    
+print(inv_BWT(transform))

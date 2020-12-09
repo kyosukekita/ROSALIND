@@ -19,4 +19,4 @@ def last_to_first(text,i):
             return before
     
     
-print(inv_BWT(transform,i))
+print(last_to_first(text,i))

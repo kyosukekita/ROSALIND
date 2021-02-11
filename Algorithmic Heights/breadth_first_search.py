@@ -11,7 +11,7 @@ edges=[tmp[i:i+2] for i in range(0,len(tmp),2)]
 
 
 #グラフを描く
-graph=[[] for _ in range(n+1)]#graph[i]に頂点と直接つながっている頂点番号を入れる。graph0に意味はない
+graph=[[] for _ in range(n+1)]#graph[i]に頂点と直接つながっている頂点番号を入れる。graph[0]に意味はない
 for edge in edges:
     graph[edge[0]].append(edge[1])
 

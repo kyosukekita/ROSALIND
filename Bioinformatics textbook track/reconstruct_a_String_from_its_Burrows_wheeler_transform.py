@@ -1,5 +1,6 @@
 #http://smrmkt.hatenablog.jp/entry/2015/01/06/002300
 #https://naoya-2.hatenadiary.org/entry/20081016/1224173077
+#https://bi.biopapyrus.jp/rnaseq/mapping/bwt.html
 
 file = open('Desktop/Downloads/rosalind_ba9j (1).txt').read()
 transform=(file.split("\n")[0])

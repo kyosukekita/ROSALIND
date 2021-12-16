@@ -25,7 +25,7 @@ for node in graph:
 
 
 #ノードの次数を調べる
-"""あるグラフが準オイラーグラフであるための必要条件は、そのグラフのすべての頂点の字数が偶数"""
+"""あるグラフが準オイラーグラフであるための必要十分条件は、次数が奇数であるものがちょうど２つ"""
 deg=[0 for _ in range(nodeNum)]
 for i in range(nodeNum):
     for j in range(nodeNum):
@@ -53,7 +53,7 @@ def formCycle(nodes, source):
     return cycle, nodes
 
 def EulerianPath(graph,start,end):
-    #最初のノードと最後のノードは、ノードの字数から明らか
+    #最初のノードと最後のノードは、ノードの次数から明らか
     path=[start,end]
     #while there are unexplored edges in graph
     while True:

@@ -20,3 +20,8 @@ def last_to_first(text,i):
     
     
 print(last_to_first(text,i))
+
+
+#もっと簡単な書き方があるよ
+def last_to_first(seq, idx_last):
+    return sorted(range(len(seq)), key=lambda i: seq[i]).index(idx_last)

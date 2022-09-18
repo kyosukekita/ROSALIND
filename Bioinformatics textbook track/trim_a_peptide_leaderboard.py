@@ -1,5 +1,4 @@
 file = open('/Users/kita/Downloads/rosalind_ba4l.txt', 'r').read()
-#file = open('/Users/kita/Downloads/rosalind_meme.txt', 'r').read()
 Leaderboard=list(str(i) for i in (file.split("\n")[0].split()))
 Leaderboard=list(str(i) for i in (file.split("\n")[0].split()))
 Spectrum=[int(i) for i in file.split("\n")[1].split() if i!=" "]
@@ -74,12 +73,12 @@ import numpy as np
 
 def trim(leaderboard, Spectrum, n):
     linearscores=[scoring_function(leaderboard[j], Spectrum) for j in range(len(leaderboard))]
-    leaderboard=sorted(leaderboard, key= lambda x: scoring_function(x,Spectrum),reverse=True )
+    leaderboard=sorted(leaderboard, key= lambda x: scoring_function(x,Spectrum),reverse=True)
     linearscores=sorted(linearscores, reverse=True)
     
-    boolean_id=[]
-    for j in range(len(leaderboard)):
-        if linearscores[j] < linearscores[n]:#ここ間違い。サンプルデータセットは不正解
+    boolean_id=[True for _ in range(n)]
+    for j in range(n, len(leaderboard)):
+        if linearscores[j] < linearscores[n-1]:
             boolean_id.append(False)
         else:
             boolean_id.append(True)

@@ -18,7 +18,7 @@ def FarthestFirstTraversal(data,k,m):
     while len(centers)<k:
         
         farthest_distance=-1#初期値
-        
+ 
         for i in range(1,len(data)):
             min_dist=float("Inf")
             for j in range(len(centers)):
@@ -26,7 +26,6 @@ def FarthestFirstTraversal(data,k,m):
                 if d<min_dist:
                     min_dist=d
             
-                
             if min_dist>farthest_distance:
                 farthest_distance = min_dist
                 farthest_point_id = i
@@ -35,6 +34,7 @@ def FarthestFirstTraversal(data,k,m):
         data.pop(farthest_point_id)
                 
     return centers
+
 
 for i in FarthestFirstTraversal(data,k,m):
     print(*i)

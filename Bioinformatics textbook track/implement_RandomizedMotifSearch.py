@@ -1,4 +1,4 @@
-#正しい答えに収束しない。現在考察中。
+
 #http://www.hcbravo.org/cmsc423/lectures/Motif_finding.pdf
 
 import random
@@ -85,11 +85,11 @@ def MakeRandomMotifs(dnas,k):
 
 
 def RandomizedMotifSearch(dnas,k,t):
-    random_motifs=MakeRandomMotifs(dnas,k)
+    motifs=MakeRandomMotifs(dnas,k)
     BestMotifs=random_motifs
     
     while True:
-        profile=FormProfile(random_motifs)
+        profile=FormProfile(motifs)
         motifs=[]
         for i in range(t):
             motifi=MostProbableKmer(dnas[i],profile,k)

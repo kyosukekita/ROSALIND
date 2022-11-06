@@ -27,7 +27,7 @@ def testing_acyclicity(edges,n):
         
         #vへと伸びている頂点たちを探索する
         for i in graph[v]:
-            #辺(i,v)を削除する
+            #辺(i→v)を削除する
             deg[i]-=1
             
             #それによってiが新たにシンクになったらキューに挿入
@@ -53,7 +53,6 @@ for i in range(N):
         ele=list(map(int,ele.split(" ")))
         graphi.append(ele)
     graphs.append(graphi)
-
 
 
 answer=[]

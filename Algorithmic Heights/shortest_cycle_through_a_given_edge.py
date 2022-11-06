@@ -1,10 +1,11 @@
+"""重みに負が含まれていない限り、dijkstraでもbellman-fordでもどちらでも良い"""
+
 def dijkstra(graph,NodeNum,start,end):
     shortest_distance=[float("inf")]*(NodeNum+1)#startからの距離。初期値は∞
     shortest_distance[start]=0 
     unseenNodes=graph
     path=[]#ここに答えを入れる
     
-
     while unseenNodes:#未探索ノードがある限り
         minNode=None
         for node in unseenNodes:
@@ -54,9 +55,6 @@ for i in range(N):
         answer.append(-1)
     
 print(' '.join(map(str,answer)))
-
-
-
 
 
 

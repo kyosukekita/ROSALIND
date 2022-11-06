@@ -29,7 +29,7 @@ def majority_element(a):
     candidate,count=a[0],0 #初期化
     #Run through the list, updating the count and changing candidates as necessary.
     for element in a:
-        count += [-1,1][element == candidate]
+        count += [-1,1][element == candidate] # False=0, True=1
         if count ==0:
             candidate, count =element,1
     #Chech if the candidate is indeed the majority element

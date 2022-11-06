@@ -1,4 +1,4 @@
-#知る人ぞ知る応用問題。深さ優先探索を使って二部グラフ判定ができる。参考：http://prd-xxx.hateblo.jp/entry/2017/10/13/004256
+#深さ優先探索(DFS)の応用問題。DFSを使って二部グラフ判定ができる。参考：http://prd-xxx.hateblo.jp/entry/2017/10/13/004256
 
 file = open('Desktop/Downloads/rosalind_bip (1).txt', 'r').read()
 n=int(file.split()[0])
@@ -32,7 +32,7 @@ def testing_bipartiteness(graphs):
         colors=[(0) for i in range(len(graphn)+1)]#n個の頂点の色を初期化。1(黒確定)、0(未訪問)、-1(白確定)
         
         def dfs(v,color):
-            #今いる点を着色
+            #今いる点vを着色
             colors[v] = color
             #今の頂点から行けるところをチェック
             for next_node in graphn[v]:
@@ -51,7 +51,6 @@ def testing_bipartiteness(graphs):
             answer.append("-1")
     
     return answer
-
 
 
 print(' '.join(testing_bipartiteness(graphs)))

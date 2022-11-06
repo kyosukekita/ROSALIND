@@ -1,4 +1,5 @@
 #深さ優先探索(DFS)の応用問題。DFSを使って二部グラフ判定ができる。参考：http://prd-xxx.hateblo.jp/entry/2017/10/13/004256
+#重要なポイント: DFSは再帰関数と相性が良い。
 
 file = open('Desktop/Downloads/rosalind_bip (1).txt', 'r').read()
 n=int(file.split()[0])

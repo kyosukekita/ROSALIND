@@ -1,6 +1,6 @@
 #bellmanford_algorithm2.pyと同じコード
 
-file = open('Desktop/Downloads/rosalind_sdag (2).txt', 'r').read()
+file = open('Desktop/Downloads/rosalind_sdag.txt', 'r').read()
 n=int(file.split()[0])
 k=int(file.split()[1])
 
@@ -36,10 +36,9 @@ def bellmanford(start,NodeNum):
         if(is_updated==False):
             break
     
-    
     for i in range(len(distances)):
         if distances[i]==float("inf"):
-            distances[i]="x"
+            distances[i]=　-1
     
     return distances[1:]
 

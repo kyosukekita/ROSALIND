@@ -1,6 +1,6 @@
 #https://tjkendev.github.io/procon-library/python/graph/scc.html
 #強連結成分分解～任意の有向グラフをＤＡＧに変換するお話
-#DFSを2回するだけ
+#DFSを2回するだけ　#https://pione.hatenablog.com/entry/2021/03/11/232159
 
 file= open('Desktop/Downloads/rosalind_scc.txt').read()
 tmp=[int(i) for i in file.split()[2:]]

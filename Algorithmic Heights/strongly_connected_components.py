@@ -26,7 +26,7 @@ def rGraph(edges,n):
     return rgraph
 
 
-"""頂点サイズがＮ、順方向の有向グラフがＧ、逆方向の有向グラフ"""
+"""頂点サイズはＮ、順方向の有向グラフはＧ、逆方向の有向グラフはRG"""
 def scc(N,G,RG):
     order=[]
     visited=[False for _ in range(N)]

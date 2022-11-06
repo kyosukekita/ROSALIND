@@ -38,7 +38,7 @@ def bellmanford(start,NodeNum):
     
     for i in range(len(distances)):
         if distances[i]==float("inf"):
-            distances[i]=　-1
+            distances[i]=　"x"
     
     return distances[1:]
 

@@ -1,6 +1,6 @@
 #testing_acyclicity.py
-"""「トポロジカルソートをしていく過程で、サイクルに含まれる頂点は一度もシンクに
-なることはありえない」という性質を使う。"""
+"""「トポロジカルソートをしていく過程で、サイクルに含まれる頂点は一度も
+シンク（有向グラフにおいて出次数が0であるような頂点）になることはありえない」という性質を使う。"""
 
 from collections import deque
 
@@ -9,7 +9,7 @@ def testing_acyclicity(edges,n):
     deg=[0]*(n+1) #各頂点の出自数(引数0には意味はない)
     
     for edge in edges:
-        graph[edge[1]].append(edge[0])
+        graph[edge[1]].append(edge[0]) #edge[1]← edge[0]
         deg[edge[0]]+=1
         
     #シンクをキューに挿入する

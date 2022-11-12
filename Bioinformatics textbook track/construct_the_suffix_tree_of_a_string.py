@@ -46,9 +46,9 @@ class SuffixTree:
                     n2=n1
                     #new node for the past in common
                     n1=len(self.nodes)#既に登録しているnodeの個数
-                    self.nodes.append(Node(sub2[:j],[n2]))
-                    self.nodes[n2].sub=sub2[j:] #old node loses the part in common
-                    self.nodes[n].ch[x1]=n1
+                    self.nodes.append(Node(sub1[:j],[n2]))
+                    self.nodes[n2].sub=sub1[j:] #old node loses the part in common
+                    self.nodes[n].ch[x]=n1
                     break
                 j+=1
             i+=j

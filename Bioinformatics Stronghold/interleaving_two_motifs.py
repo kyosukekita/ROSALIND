@@ -1,5 +1,6 @@
 #shortest common supersequence (SCSLength(X,Y)= m+n-LCSLength(X,Y))　典型的な動的計画法だが、この問題はLCSと密接に関係している。
 # https://python.plainenglish.io/print-shortest-common-supersequence-day-61-python-bba3ca1c288
+# https://devtut.github.io/algorithm/shortest-common-supersequence-problem.html#shortest-common-supersequence-problem-basic-information
 
 s="""TTACGGCCCCTACCCGTTAGACTGCTCTTCCGTGCTTAGCGGTGTCTCGAGTATTAGTACGGCCAGCACATTTGACCGTGTATTCCGGGCTA"""
 t="""AGGATAGTTTCTAAAAGCATACGAGCGATCCCTTGGATGAGAAGTCTCGACGTAGAGGAACTGCCGTTCTAGATGCCAACCAAGAGGATCGGAAAG"""

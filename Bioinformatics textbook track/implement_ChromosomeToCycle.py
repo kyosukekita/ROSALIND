@@ -2,7 +2,7 @@ file=open('Desktop/Downloads/rosalind_ba6f.txt').read()
 chromosome=[int(i) for i in file.strip("()").split()]
 
 
-def chromosomeToCycle(chromosome):
+def ChromosomeToCycle(chromosome):
     nodes=[0 for _ in range(2*len(chromosome))]
     for j in range(0,len(chromosome)):
         i=chromosome[j]
@@ -15,4 +15,4 @@ def chromosomeToCycle(chromosome):
     
     return nodes
             
-print("("+' '.join(map(str,chromosomeToCycle(chromosome)))+")")
+print("("+' '.join(map(str,ChromosomeToCycle(chromosome)))+")")

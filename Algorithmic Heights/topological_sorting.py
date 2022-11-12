@@ -1,7 +1,7 @@
 #topological_sorting.py
+グラフ G は閉路の無い有向グラフ DAG である ⇔ グラフ G はトポロジカルソートできる
 
 from collections import deque
-
 
 file= open('Desktop/Downloads/rosalind_ts.txt').read()
 tmp=[int(i) for i in file.split()[2:]]

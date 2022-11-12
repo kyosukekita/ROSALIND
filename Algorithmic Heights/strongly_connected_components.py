@@ -1,5 +1,5 @@
 #https://tjkendev.github.io/procon-library/python/graph/scc.html
-#強連結成分分解～任意の有向グラフをＤＡＧに変換するお話
+#強連結成分分解～任意の有向グラフをＤＡＧに変換するお話　　トポロジカルソートを応用
 #DFSを2回するだけ　#https://pione.hatenablog.com/entry/2021/03/11/232159
 
 file= open('Desktop/Downloads/rosalind_scc.txt').read()

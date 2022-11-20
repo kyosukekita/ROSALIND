@@ -18,6 +18,7 @@ kmp(string)
 
 #KMP法の詳細
 #https://engineeringnote.hateblo.jp/entry/python/algorithm-and-data-structures/kmp_algorithm
+#https://yottagin.com/?p=7218#
 
 def create_table(pattern):
     table = [0]*len(pattern)

@@ -17,7 +17,7 @@ def WrightFisher_GeneticDrift(N, m, g):#gは次の世代
     # the probability of exactly i copies of recessive allele in 1st generation.
     prob = [math.comb(2*N,i) * (q**(i)) * (p**(2*N-i)) for i in range(1, 2*N+1)]
 
-    # 次の世代でtコピーの recessive allele が存在する確率=gen_prob
+    # 次の世代でtコピーの recessive allele が存在する確率
     for gen in range(1, g):
         gen_prob = []
 

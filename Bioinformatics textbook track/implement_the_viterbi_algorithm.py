@@ -111,3 +111,64 @@ for p in probabilities:
         path+=("B")
         
 print(path)
+
+
+
+#勉強用資料　https://www.kabuku.co.jp/developers/hmm    
+import numpy as np
+    
+def viterbi(stringx,sigma,states,transition,emission):
+    
+    #statesの種類の個数
+    S = len(states) #len([A,B])==2
+    
+    #output_path=stringxの単語の個数
+    T= len(stringx) 
+    
+    #累積確率の最大化を記録するための確率テーブル  (2,10)
+    V = np.zeros((S,T), dtype=np.float32)
+    #初期確率 AとBの初期確率は1/2ずつ
+    for x in range(S):
+        V[x][0]=1/S
+    
+    #累積確率を最大化する直前のstringxのインデックスを保持するインデックステーブル  (2,10)
+    #x:0, y:1, z:2
+    B = np.zeros((S,T), dtype=int)
+    
+    #確率テーブルV　とインデックステーブルを埋める
+    for i in range(1,T):
+        for j in range(S):
+            V[j][i], B[j][i] = calc_table(S,T,V, i, j,stringx,sigma,transition,emission) 
+            
+    #テーブルを基に、各stringx中の文字について、最適なstatesを選択していく
+    X= np.zeros((T), dtype=int)
+    max_prob = 0.0
+    for j in range(S):
+        if V[j][T-1] > max_prob:
+            max_prob = V[j][T-1]
+            X[T-1] = j
+    for i in range(T-2,0,-1):
+        X[i] = B[X[i+1]][i+1]
+        
+    #statesのインデックスからstatesの名称(A,B)を得る
+    hidden_seq=[]
+    for states_idx in X:
+        hidden_seq.append(states[states_idx])
+        
+    return "".join(hidden_seq)
+
+#ビタビアルゴリズムの累積確率の計算処理(累積＊出力確率＊状態遷移確率)
+def calc_table(S,T,V, i, j, stringx, sigma, transition, emission):
+    max_prob=0.0
+    max_k=0
+    for k in range(S):
+        # kはstate, j はcurrent state
+        prob = V[k][i-1] *transition[k][j]*emission[j][sigma.index(stringx[i])] 
+        
+        if prob >max_prob:
+            max_prob, max_k = prob, k
+        
+    return max_prob, max_k
+
+
+print(viterbi(stringx,sigma,states,transition,emission))    

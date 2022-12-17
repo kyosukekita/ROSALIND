@@ -1,6 +1,67 @@
 """ビタビアルゴリズムは、観測された事象系列を結果として生じる隠された状態の最もらしい並び
 動的計画法アルゴリズムの一種:復号化問題"""
+#https://yuutookun.hatenablog.com/entry/2012/10/07/153101
 
+
+file = open('/Users/kita/Downloads/rosalind_ba10c (1).txt').read()
+stringx=file.split("\n")[0]#output
+sigma=[i for i in file.split("\n")[2] if i!=" "] #入力するときは、スペースキーを除去してください。
+states=[i for i in file.split("\n")[4] if i!=" "]#state　#入力するときは、スペースキーを除去してください。
+transition=[]
+for i in range(7,7+len(states)):
+    transition.append([float(j) for j in file.split("\n")[i].split()[1:]])   
+emission=[]
+for i in range(9+len(states),9+len(states)+len(states)):
+    emission.append([float(j) for j in file.split("\n")[i].split()[1:]])
+    
+    
+
+def viterbi(stringx, sigma, states, transition, emission):
+    initTransitionProb=1/len(states)#状態がA,B,Cだった場合、これらは等確率で現れる
+    
+    backtrace={}
+    trace={}
+    
+    for i in range(len(stringx)):
+        trace[i]={}
+        
+        if i==0:
+            for current_state in states:
+                trace[i][current_state]=initTransitionProb*emission[states.index(current_state)][sigma.index(stringx[i])]
+        else:
+            backtrace[i]={}
+            for current_state in states:
+                tmp_prob=-float("inf")
+                for before_state in states:
+                    tmp= trace[i-1][before_state]*transition[states.index(before_state)][states.index(current_state)]* emission[states.index(current_state)][sigma.index(stringx[i])]
+                    if  tmp>tmp_prob:
+                        trace[i][current_state]=tmp
+                        tmp_prob=tmp
+                        backtrace[i][current_state]=before_state
+    
+    #print(trace)
+    #print(backtrace)
+    
+    current_state=max(backtrace[len(stringx)-1], key=backtrace[len(stringx)-1].get)
+    hidden_path=current_state
+    for i in range(len(stringx)-1,0,-1):
+        before_state = backtrace[i][current_state]
+        hidden_path= before_state + hidden_path
+        current_state=before_state
+    
+    print(hidden_path)
+        
+
+    return None
+        
+    
+viterbi(stringx, sigma, states, transition, emission)
+
+
+
+
+
+#別解
 file = open('Desktop/Downloads/rosalind_ba10c.txt').read()
 stringx=file.split("\n")[0]#output
 sigma=[i for i in file.split("\n")[2] if i!=" "] #入力するときは、スペースキーを除去してください。
@@ -55,9 +116,7 @@ print(viterbi(stringx,sigma,states,transition,emission))
 
 
 
-
-
-＃別解
+#別解
 stringx="xyxzzxyxyy"
 
 """transition"""

@@ -47,3 +47,44 @@ def dijkstra(graph,start):
     
 answer=dijkstra(graph,1)
 print(*answer)
+
+
+#優先度付きキューを使うと計算量が少なくなる
+#https://qiita.com/ko-ya346/items/359a3e03c5e20b04c573
+import heapq
+
+def dijkstra(s, n, es):
+    #始点sから各頂点への最短距離
+    #n:頂点数, cost[u][v] : 辺uvのコスト(存在しないときはinf)
+    d = [float("inf")] * n
+    #探索リスト
+    S = [s]
+    #優先度付きキューを使うと計算量が少なくなるよ
+    heapq.heapify(S)
+
+    d[s] = 0
+
+    while S:
+        #最小コストの頂点を取り出し
+        v = heapq.heappop(S)
+        # print("-----------v", v)
+        for u, w in es[v]:
+            # print(u, w)
+            #より小さなコストで到達可能であれば更新し、リストに追加
+            if d[u] > d[v]+w:
+                d[u] = d[v]+w
+                heapq.heappush(S, u)
+        # print("d", d)
+    return d
+
+n,w = map(int,input().split()) #n:頂点数　w:辺の数
+
+cost = [[float("inf") for i in range(n)] for i in range(n)] 
+es = [[] for _ in range(n)]
+
+for i in range(w):
+    x, y, z = map(int, input().split())
+    es[x].append([y, z])
+    es[y].append([x, z]) #有向グラフの場合はこの行を消す
+# print(es)
+print(dijkstra(0, n, es))

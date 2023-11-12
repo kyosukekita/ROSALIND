@@ -62,7 +62,7 @@ class Edge:
 
 
     for edge in edges:
-      if distances[edge.src]!= float("inf") and distances[edge.src]+ edge.weight:
+      if distances[edge.src]!= float("inf") and distances[edge.src]+ edge.weight < distances[edge.dest]:
         #negative cycle found
 	  return None
   

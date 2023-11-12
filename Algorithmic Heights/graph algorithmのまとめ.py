@@ -88,3 +88,88 @@ if distances:
         print(f"{i}\t\t{d}")
 else:
     print("Negative cycle detected!")
+
+
+
+
+#beam search
+#https://inarizuuuushi.hatenablog.com/entry/2022/08/22/090000
+
+from headq import heapify, heappush, heappop, heappushpop
+
+def beam_search(root, k, api):
+    """
+    Args:
+        root : root node
+        k : number of remain paths during search
+        api : apis for beam search
+    Notes:
+        api must have functions as follows.
+        (1) init : this is called at the begenning of this function
+        (2) step : return path-list or path-generator of extended path from inputed path
+        (3) score : return score for path, higher scores indicate better
+        (4) count : this function is called for every end of loop
+        (5) terminate : return true if it should terminate to search else false
+    """
+
+    paths=[(None, root)]
+    heapify(paths)
+    api.init()
+    while not.api.terminate():
+        top_paths=[]
+	heapify(top_paths)
+	for _, path in paths:
+	    for extend_path in api.step(path):
+	        score=api.score(extend_path)
+		if len(top_paths)<k:
+		    heappush(top_paths, (score, extend_path))
+		else:
+		    heappushpop(top_paths, (score, extend_path))
+	    paths = top_paths
+	    api.count()
+
+    result_paths=[]
+    result_paths_score=[]
+    for _, path in paths:
+        result_paths.append(path)
+	result_paths_scpre.append(score)
+
+    return result_paths, result_paths_score
+
+#TSP(traveling salesman problem)を例に実行
+class TSPAPI:
+    def __init__(self, n):
+        self.iter =0
+	self.n = n
+    def init(self):
+	self.iter = 0
+    def step(self, path):
+	for i in range(self.n):
+	    if i not in path:
+	        yield path[:] +[i]
+    def score(self, path):
+	"""total distance path"""
+	return -sum(D[i][j] for i, j in zip(path, path[1:]))
+    def count(self):
+	self.iter +=!
+    def terminate(self):
+	return self.iter>=self.n
+
+N = 4 #都市数
+D = [
+    [0, 1, 2, 3],
+    [4, 0, 2, 1],
+    [1, 2, 0, 3],
+    [2, 3, 4, 0],
+]#移動コスト平均
+
+#例えば、k=２で実行して見る
+from beam_search import beam_search
+root = []
+k=1
+api = TSPAPI(N)
+paths, scores = beam_search(root, k, api)
+for path, score in zip(paths[::-1], scores[::-1]):
+    print("path", path, "distance", -score)
+
+  

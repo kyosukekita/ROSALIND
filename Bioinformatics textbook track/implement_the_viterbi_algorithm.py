@@ -1,5 +1,56 @@
 """ビタビアルゴリズムは、観測された事象系列を結果として生じる隠された状態の最もらしい並び
 動的計画法アルゴリズムの一種:復号化問題"""
+
+
+file = open('/Users/kita/Downloads/rosalind_ba10c.txt').read()
+string=file.split("\n")[0]
+sigma=[i for i in list(file.split("\n")[2]) if i!="	"]
+states=[i for i in list(file.split("\n")[4]) if i!="	"]
+transition=[[float(i) for i in (file.split("\n")[7+k]).split("	")[1:] if i!=" "and i!=""] for k in range(len(states))]
+emission=[[float(i) for i in (file.split("\n")[9+len(states)+k]).split("	")[1:] if i!=" " and i!=""] for k in range(len(states))]
+
+prob=1/len(states)
+history=[{} for _ in range(len(string))]
+#history=[{"A":0.5, "B":0.5}, {"A":0.3, "B":0.4]] history[i]のAが0.3とは、pathがi番目の時にAになっている確率の最大が0.3
+backtrace=[{} for _ in range(len(string))]
+#backtrace=[{"A":"A", "B":"A"},{"A":"B","B":"A"}] backgrace[i]のAがAとは、pathがi番目の時にAになっている確率の最大がAの時、A→Aの遷移が起こったということ
+
+#初期設定
+for i in range(len(states)):
+    history[0][states[i]]=prob*emission[i][sigma.index(string[0])]# history=[{"A":0.5*Ax, "B":0.5*Bx}]
+
+for i in range(1,len(string)):
+    for j in range(len(states)):
+        register=0#history[i]["A"] or history[i]["B"]に登録する数値
+        mae=0#history[i]["A"] or history[i]["B"]に登録する際、一つ前のpathも文字は何であったかをインデックスで表示
+        for k in range(len(states)):
+            tra=transition[k][j]#history[i-1]["A"] or  history[i-1]["B"]→history[i]["A"] に遷移
+            emi=emission[j][sigma.index(string[i])]#A(i)→x(i)を出力           
+            
+            tmp = history[i-1][states[k]]*tra*emi
+            
+            if register < tmp:
+                register = tmp
+                mae = k
+            
+        history[i][states[j]]=register
+        backtrace[i][states[j]]=states[mae]#i番目のAは、A or Bのどちらから遷移してきたかを記録。後で辿る。
+
+
+current = max(history[-1], key=history[len(string)-1].get)
+path=current
+for i in range(len(string)-1,0,-1):
+    current = backtrace[i][current]
+    path = current + path
+     
+    
+print(path)
+
+
+
+
+
+
 #https://yuutookun.hatenablog.com/entry/2012/10/07/153101
 
 

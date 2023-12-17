@@ -1,3 +1,6 @@
+#本当は、オイラー経路をもとに解くべきだが、以下の回答で偶然passした
+
+
 file= open('Desktop/Downloads/rosalind_ba3h.txt').read()#ファイルの一番下の空行消す
 k=int(file.split("\n")[0])
 strings=file.split("\n")[1:]

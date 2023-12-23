@@ -1,9 +1,17 @@
-#選択ソート
+#選択ソート - 未ソートの部分から最小の要素を探し出し、それを未選択ソート部分の先頭と交換する
+def selection_sort(arr):
+    for i in range(len(arr)):
+        min_idx = i
+        for j in range(i+1, len(arr)):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    return arr
+
 def sSort(a):
     for i in range(len(a)-1):
         mi=a[i:].index(min(a[i:]))
         a[i],a[i+mi]=a[i+mi],a[i]
-    
     return a
 
 #バブルソート
@@ -12,10 +20,19 @@ def bSort(a):
         for j in range(len(a)-1,i,-1):
             if a[j] < a[j-1]:
                 a[j],a[j-1]=a[j-1],a[j]
-    
     return a
 
-#挿入ソート
+#挿入ソート - 配列を順番に走査し、各要素をそれまでのソート済みの部分に適切な位置に挿入することによって配列をソート
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+
 def iSort(a):
     for i in range(1,len(a)):
         for j in range(i,0,-1):
@@ -24,6 +41,25 @@ def iSort(a):
             else:
                 a[j],a[j-1]=a[j-1],a[j]
     return a
+
+#シェルソート
+"""挿入ソートを一般化したアルゴリズムで、非連続なサブリストに対して挿入ソートを行い、徐々にソート範囲を拡大していきます"""
+def shell_sort(arr):
+    n = len(arr)
+    gap = n // 2
+
+    while gap > 0:
+        for i in range(gap, n):
+            temp = arr[i]
+            j = i
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+            arr[j] = temp
+        gap //= 2
+
+    return arr
+
 
 #クイックソート
 def qSort(a):
@@ -49,7 +85,6 @@ def merge(l,r):#マージ
         a.append(l.pop(0)) if l[0]<=r[0] else a.append(r.pop(0))
 
     return a
-
 
 def mSort(a):#分割
     if len(a)==1:

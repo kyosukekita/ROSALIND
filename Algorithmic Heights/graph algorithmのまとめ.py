@@ -155,6 +155,14 @@ class TSPAPI:
     def terminate(self):
 	return self.iter>=self.n
 
+1, init : 初期化関数 api.init() がbeam_searchの初めに1度呼ばれます
+2, step : pathを入力として探索を1階層進めた pathのiterator/generatorを返す関数です
+3, score : pathを入力としてそのpathの評価値を返す関数です。値が高いほど良いことを表します。
+4, count : 探索が1ラウンド（上記の説明の3）が終了すると呼び出されます。
+5, terminate : beam_searchを終了するべきであればtrue, そうでないならfalseを返します。
+
+
+
 N = 4 #都市数
 D = [
     [0, 1, 2, 3],
@@ -171,5 +179,3 @@ api = TSPAPI(N)
 paths, scores = beam_search(root, k, api)
 for path, score in zip(paths[::-1], scores[::-1]):
     print("path", path, "distance", -score)
-
-  
